@@ -13,9 +13,9 @@
             <p class="section-subtitle">Have a look at our recent work. We are proud of the work we do and the clients we serve.</p>
 
             <div class="portfolio-grid">
-                <!-- 1. Website Development -->
+                <!-- Website Development Projects -->
                 <a href="{{ route('portfolio.detail', ['project' => 'e-commerce-platform']) }}" class="portfolio-item" wire:navigate>
-                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" alt="Website Development">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" alt="E-Commerce Platform">
                     <div class="portfolio-overlay">
                         <h3>E-Commerce Platform</h3>
                         <p class="project-category">Website Development</p>
@@ -25,6 +25,66 @@
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">MySQL</span>
                             <span class="tech-tag">Stripe API</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="{{ route('portfolio.detail', ['project' => 'saas-application']) }}" class="portfolio-item" wire:navigate>
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="SaaS Application">
+                    <div class="portfolio-overlay">
+                        <h3>SaaS Application</h3>
+                        <p class="project-category">Website Development</p>
+                        <p class="project-description">Cloud-based SaaS platform for project management with real-time collaboration, task tracking, and analytics dashboard. Built with microservices architecture for scalability.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="{{ route('portfolio.detail', ['project' => 'corporate-website']) }}" class="portfolio-item" wire:navigate>
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=800&q=80" alt="Corporate Website">
+                    <div class="portfolio-overlay">
+                        <h3>Corporate Website</h3>
+                        <p class="project-category">Website Development</p>
+                        <p class="project-description">Modern corporate website with CMS integration, multilingual support, and advanced SEO optimization. Features include team management, news/blog system, and contact forms.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">WordPress</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Elementor</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="{{ route('portfolio.detail', ['project' => 'blog-platform']) }}" class="portfolio-item" wire:navigate>
+                    <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80" alt="Modern Blog Platform">
+                    <div class="portfolio-overlay">
+                        <h3>Modern Blog Platform</h3>
+                        <p class="project-category">Website Development</p>
+                        <p class="project-description">Advanced blogging platform with markdown editor, social sharing, comment system, and newsletter integration. Built for content creators and publishers.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Strapi CMS</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Redis</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="{{ route('portfolio.detail', ['project' => 'learning-management-system']) }}" class="portfolio-item" wire:navigate>
+                    <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=800&q=80" alt="Learning Management System">
+                    <div class="portfolio-overlay">
+                        <h3>Learning Management System</h3>
+                        <p class="project-category">Website Development</p>
+                        <p class="project-description">Comprehensive LMS platform with course management, video streaming, quizzes, certificates, and student progress tracking. Built for educational institutions.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">AWS S3</span>
                         </div>
                     </div>
                 </a>

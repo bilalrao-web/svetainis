@@ -20,15 +20,24 @@
                 <p class="project-description">{{ $projectDetails['description'] }}</p>
                 
                 <div class="project-meta">
-                    <div class="meta-item">
-                        <strong>Client:</strong> {{ $projectDetails['client'] }}
-                    </div>
-                    <div class="meta-item">
-                        <strong>Duration:</strong> {{ $projectDetails['duration'] }}
-                    </div>
-                    <div class="meta-item">
-                        <strong>Team Size:</strong> {{ $projectDetails['team_size'] }}
-                    </div>
+                    @if(isset($projectDetails['web_type']))
+                        <div class="meta-item">
+                            <strong>Web Type:</strong> {{ $projectDetails['web_type'] }}
+                        </div>
+                        <div class="meta-item">
+                            <strong>Use Cases:</strong> {{ $projectDetails['use_cases'] }}
+                        </div>
+                    @else
+                        <div class="meta-item">
+                            <strong>Client:</strong> {{ $projectDetails['client'] ?? 'N/A' }}
+                        </div>
+                        <div class="meta-item">
+                            <strong>Duration:</strong> {{ $projectDetails['duration'] ?? 'N/A' }}
+                        </div>
+                        <div class="meta-item">
+                            <strong>Team Size:</strong> {{ $projectDetails['team_size'] ?? 'N/A' }}
+                        </div>
+                    @endif
                 </div>
 
                 <div class="project-technologies">
