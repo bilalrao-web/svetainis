@@ -1,4 +1,4 @@
-<div>
+<div class="themain">
     <!-- Page Hero Section -->
     <div class="page-hero">
         <div class="page-hero-content">

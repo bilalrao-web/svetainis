@@ -298,9 +298,6 @@ class PortfolioDetail extends Component
             'image' => 'https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1931&auto=format&fit=crop',
             'description' => 'Complete brand identity package including logo design, business cards, letterhead, and marketing materials. Created a cohesive visual identity that reflects the company\'s modern and professional values.',
             'technologies' => ['Adobe Illustrator', 'Photoshop', 'InDesign', 'Brand Guidelines'],
-            'client' => 'InnovateCorp',
-            'duration' => '6 weeks',
-            'team_size' => '2 designers',
             'challenge' => 'Creating a unique brand identity that would stand out in a competitive market while maintaining professional credibility.',
             'solution' => 'Developed a comprehensive brand strategy with modern typography, cohesive color palette, and versatile logo system that works across all media platforms.',
             'results' => [
@@ -327,9 +324,6 @@ class PortfolioDetail extends Component
             'image' => 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80',
             'description' => 'Comprehensive social media strategy across Facebook, Instagram, and LinkedIn. Increased engagement by 300% and generated 50% more qualified leads through targeted content and paid advertising campaigns.',
             'technologies' => ['Facebook Ads', 'Instagram Marketing', 'Google Analytics', 'Content Strategy'],
-            'client' => 'GrowthTech Solutions',
-            'duration' => '4 months',
-            'team_size' => '3 marketers',
             'challenge' => 'Building brand awareness and generating leads in a B2B technology sector with high competition and complex buyer journey.',
             'solution' => 'Developed a multi-platform content strategy with targeted paid campaigns, engaging organic content, and data-driven optimization to reach the right audience at the right time.',
             'results' => [
@@ -356,9 +350,6 @@ class PortfolioDetail extends Component
             'image' => 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=800&q=80',
             'description' => 'Developed comprehensive content strategy with 50+ SEO-optimized blog posts. Achieved #1 ranking for 15 target keywords and increased organic traffic by 250% within 6 months.',
             'technologies' => ['Keyword Research', 'Content Writing', 'On-Page SEO', 'Analytics'],
-            'client' => 'ContentFirst Agency',
-            'duration' => '6 months',
-            'team_size' => '4 content creators',
             'challenge' => 'Improving search rankings and organic traffic in a highly competitive content marketing space.',
             'solution' => 'Conducted extensive keyword research, created high-quality content clusters, and implemented technical SEO improvements to boost search visibility.',
             'results' => [
@@ -414,9 +405,6 @@ class PortfolioDetail extends Component
             'image' => 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=800&q=80',
             'description' => 'Complete UI/UX redesign for mobile banking application. Improved user experience with intuitive navigation, accessibility features, and modern design principles. Increased user satisfaction by 40%.',
             'technologies' => ['Figma', 'Prototyping', 'User Research', 'Design System'],
-            'client' => 'SecureBank Ltd.',
-            'duration' => '8 weeks',
-            'team_size' => '3 designers',
             'challenge' => 'Redesigning a complex banking app to be more user-friendly while maintaining security and regulatory compliance requirements.',
             'solution' => 'Conducted extensive user research, created wireframes and prototypes, and developed a comprehensive design system that prioritizes usability and accessibility.',
             'results' => [

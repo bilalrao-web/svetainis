@@ -1,4 +1,4 @@
-<div>
+<div class="themain">
     <section class="page-hero">
         <div class="page-hero-content">
             <h1 class="animate-fade-in-down">Portfolio</h1>

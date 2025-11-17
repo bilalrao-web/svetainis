@@ -1,4 +1,4 @@
-<div>
+<div class="themain">
     <!-- Page Hero Section -->
     <div class="page-hero">
         <div class="page-hero-content">
@@ -28,15 +28,6 @@
                             <strong>Use Cases:</strong> {{ $projectDetails['use_cases'] }}
                         </div>
                     @else
-                        <div class="meta-item">
-                            <strong>Client:</strong> {{ $projectDetails['client'] ?? 'N/A' }}
-                        </div>
-                        <div class="meta-item">
-                            <strong>Duration:</strong> {{ $projectDetails['duration'] ?? 'N/A' }}
-                        </div>
-                        <div class="meta-item">
-                            <strong>Team Size:</strong> {{ $projectDetails['team_size'] ?? 'N/A' }}
-                        </div>
                     @endif
                 </div>
 
