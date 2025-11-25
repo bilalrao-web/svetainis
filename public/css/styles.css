@@ -795,6 +795,150 @@ a {
     margin-bottom: 30px;
 }
 
+.service-intro {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--light-text);
+    margin-bottom: 25px;
+}
+
+.service-description {
+    line-height: 1.8;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+.service-offerings {
+    background-color: #2a2a2a;
+    padding: 30px;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+    margin: 30px 0;
+}
+
+.service-offerings h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.services-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.services-list li {
+    color: var(--medium-text);
+    line-height: 2;
+    padding-left: 25px;
+    position: relative;
+    font-size: 1rem;
+}
+
+.services-list li::before {
+    content: '●';
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.service-closing {
+    line-height: 1.8;
+    color: #ccc;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.service-note {
+    line-height: 1.8;
+    color: #ccc;
+    margin: 30px 0;
+    font-style: italic;
+}
+
+.service-offerings.why-choose {
+    background-color: #252525;
+    border-left-color: var(--primary-color);
+}
+
+.checkmark-list li::before {
+    content: '✓';
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.why-choose-intro {
+    color: var(--light-text);
+    font-weight: 500;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+/* SEO Service Specific Styles */
+.seo-services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.seo-service-item {
+    background-color: #2a2a2a;
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.seo-service-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.seo-service-title {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.seo-service-description {
+    color: var(--medium-text);
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.seo-sub-items {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0 0;
+    padding-left: 20px;
+}
+
+.seo-sub-items li {
+    color: var(--medium-text);
+    line-height: 1.8;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.seo-sub-items li::before {
+    content: '→';
+    color: var(--primary-color);
+    font-size: 1rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
 /* =================================
    8. Animations
 ==================================== */

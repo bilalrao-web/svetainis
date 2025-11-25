@@ -15,10 +15,116 @@
             </div>
             <div class="service-text animate-fade-in-right">
                 <h2>{{ $serviceDetails['title'] }}</h2>
-                <p>{{ $serviceDetails['description'] }}</p>
-                @if ($service === 'website-development')
+                <p class="service-intro">{{ $serviceDetails['description'] }}</p>
+                
+                @if ($service === 'website-development' && isset($serviceDetails['intro']))
+                    <p class="service-description">{{ $serviceDetails['intro'] }}</p>
+                    
+                    <div class="service-offerings">
+                        <h3>What We Offer:</h3>
+                        <ul class="services-list">
+                            @foreach($serviceDetails['services'] as $serviceItem)
+                                <li>{{ $serviceItem }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    
+                    <p class="service-closing">{{ $serviceDetails['closing'] }}</p>
+                    
                     <a href="#web-types-grid" class="cta-button">DISCOVER MORE</a>
+                @elseif ($service === 'app-development' && isset($serviceDetails['intro']))
+                    <p class="service-description">{{ $serviceDetails['intro'] }}</p>
+                    
+                    <div class="service-offerings">
+                        <h3>Our App Development Services</h3>
+                        <ul class="services-list">
+                            @foreach($serviceDetails['services'] as $serviceItem)
+                                <li>{{ $serviceItem }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    
+                    @if(isset($serviceDetails['note']))
+                        <p class="service-note">{{ $serviceDetails['note'] }}</p>
+                    @endif
+                    
+                    <div class="service-offerings why-choose">
+                        <h3>Why Choose Our Agency?</h3>
+                        <ul class="services-list checkmark-list">
+                            @foreach($serviceDetails['why_choose'] as $benefit)
+                                <li>{{ $benefit }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    
+                    <p class="service-closing">{{ $serviceDetails['closing'] }}</p>
+                    
+                    <a href="{{ route('portfolio.detail', ['project' => $serviceDetails['portfolio_project']]) }}" class="cta-button" wire:navigate>DISCOVER MORE</a>
+                @elseif ($service === 'graphic-designing' && isset($serviceDetails['intro']))
+                    <p class="service-description">{{ $serviceDetails['intro'] }}</p>
+                    
+                    <div class="service-offerings">
+                        <h3>Services We Provide</h3>
+                        <ul class="services-list">
+                            @foreach($serviceDetails['services'] as $serviceItem)
+                                <li>{{ $serviceItem }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    
+                    <div class="service-offerings why-choose">
+                        <h3>Why We Are Your Best Choice</h3>
+                        <p class="why-choose-intro">Our clients receive:</p>
+                        <ul class="services-list checkmark-list">
+                            @foreach($serviceDetails['why_choose'] as $benefit)
+                                <li>{{ $benefit }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    
+                    <p class="service-closing">{{ $serviceDetails['closing'] }}</p>
+                    
+                    <a href="{{ route('portfolio.detail', ['project' => $serviceDetails['portfolio_project']]) }}" class="cta-button" wire:navigate>DISCOVER MORE</a>
+                @elseif ($service === 'seo-content-writing' && isset($serviceDetails['intro']))
+                    <p class="service-description">{{ $serviceDetails['intro'] }}</p>
+                    
+                    @if(isset($serviceDetails['note']))
+                        <p class="service-note">{{ $serviceDetails['note'] }}</p>
+                    @endif
+                    
+                    <div class="service-offerings">
+                        <h3>The Core SEO Services We Provide</h3>
+                        <div class="seo-services-list">
+                            @foreach($serviceDetails['services'] as $serviceItem)
+                                <div class="seo-service-item">
+                                    <h4 class="seo-service-title">{{ $serviceItem['title'] }}</h4>
+                                    <p class="seo-service-description">{{ $serviceItem['description'] }}</p>
+                                    @if(isset($serviceItem['sub_items']) && count($serviceItem['sub_items']) > 0)
+                                        <ul class="seo-sub-items">
+                                            @foreach($serviceItem['sub_items'] as $subItem)
+                                                <li>{{ $subItem }}</li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    
+                    <div class="service-offerings why-choose">
+                        <h3>What You Gain From Our SEO Services:</h3>
+                        <ul class="services-list checkmark-list">
+                            @foreach($serviceDetails['benefits'] as $benefit)
+                                <li>{{ $benefit }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    
+                    <p class="service-closing">{{ $serviceDetails['closing'] }}</p>
+                    
+                    <a href="{{ route('portfolio.detail', ['project' => $serviceDetails['portfolio_project']]) }}" class="cta-button" wire:navigate>DISCOVER MORE</a>
                 @else
+                    <p>{{ $serviceDetails['description'] }}</p>
                     <a href="{{ route('portfolio.detail', ['project' => $serviceDetails['portfolio_project']]) }}" class="cta-button" wire:navigate>DISCOVER MORE</a>
                 @endif
             </div>
