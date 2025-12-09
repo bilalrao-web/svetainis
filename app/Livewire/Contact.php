@@ -40,7 +40,7 @@ class Contact extends Component
         $this->reset(['name', 'email', 'message']);
 
         // Set the success message
-        $this->successMessage = 'Your message has been sent successfully!';
+        $this->successMessage = __('messages.message_sent_success');
     }
 
     /**

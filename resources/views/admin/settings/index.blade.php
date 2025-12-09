@@ -24,7 +24,11 @@
             <div>
                 <label class="block text-gray-700 font-bold mb-2">Logo</label>
                 @if(isset($settings['logo']) && $settings['logo'])
-                    <img src="{{ asset('storage/' . $settings['logo']) }}" alt="Logo" class="mb-2 h-20">
+                    @if(str_starts_with($settings['logo'], 'storage/'))
+                        <img src="{{ asset($settings['logo']) }}" alt="Logo" class="mb-2 h-20">
+                    @else
+                        <img src="{{ asset($settings['logo']) }}" alt="Logo" class="mb-2 h-20">
+                    @endif
                 @endif
                 <input type="file" name="logo" accept="image/*" 
                     class="w-full px-3 py-2 border border-gray-300 rounded-md">
@@ -46,6 +50,55 @@
                 <label class="block text-gray-700 font-bold mb-2">Contact Phone</label>
                 <input type="text" name="contact_phone" value="{{ $settings['contact_phone'] ?? '' }}" 
                     class="w-full px-3 py-2 border border-gray-300 rounded-md">
+            </div>
+
+            <div>
+                <label class="block text-gray-700 font-bold mb-2">Address</label>
+                <textarea name="address" rows="2" 
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md">{{ $settings['address'] ?? '' }}</textarea>
+            </div>
+
+            <div>
+                <label class="block text-gray-700 font-bold mb-2">About Text</label>
+                <textarea name="about_text" rows="4" 
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md">{{ $settings['about_text'] ?? '' }}</textarea>
+                <p class="text-sm text-gray-500 mt-1">This text will appear in the footer "About" section</p>
+            </div>
+
+            <div class="border-t pt-6 mt-6">
+                <h3 class="text-xl font-bold mb-4">Social Media Links</h3>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2">Instagram URL</label>
+                        <input type="url" name="instagram_url" value="{{ $settings['instagram_url'] ?? '' }}" 
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="https://instagram.com/yourpage">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2">TikTok URL</label>
+                        <input type="url" name="tiktok_url" value="{{ $settings['tiktok_url'] ?? '' }}" 
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="https://tiktok.com/@yourpage">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2">LinkedIn URL</label>
+                        <input type="url" name="linkedin_url" value="{{ $settings['linkedin_url'] ?? '' }}" 
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="https://linkedin.com/company/yourcompany">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2">Facebook URL</label>
+                        <input type="url" name="facebook_url" value="{{ $settings['facebook_url'] ?? '' }}" 
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="https://facebook.com/yourpage">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2">YouTube URL</label>
+                        <input type="url" name="youtube_url" value="{{ $settings['youtube_url'] ?? '' }}" 
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="https://youtube.com/@yourchannel">
+                    </div>
+                </div>
             </div>
         </div>
 

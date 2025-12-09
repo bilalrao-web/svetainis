@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Locale is now handled by SetLocale middleware
+        // This ensures it runs on every request
     }
 }

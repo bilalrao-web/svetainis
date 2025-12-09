@@ -27,17 +27,29 @@
                     <a href="{{ $href }}"
                        class="{{ ($item->route && request()->routeIs($item->route)) || ($item->url && request()->is($item->url)) ? 'active' : '' }}"
                        wire:navigate>
-                        {{ $item->label }}
+                        {{ $item->translated_label }}
                     </a>
                 </li>
             @empty
                 {{-- Fallback to default menu if no items in database --}}
-                <li><a href="{{ route('landing') }}" class="{{ request()->routeIs('landing') ? 'active' : '' }}" wire:navigate>Home</a></li>
-                <li><a href="{{ route('services') }}" class="{{ request()->routeIs('services') || request()->routeIs('service.detail') ? 'active' : '' }}" wire:navigate>Services</a></li>
-                <li><a href="{{ route('portfolio') }}" class="{{ request()->routeIs('portfolio') ? 'active' : '' }}" wire:navigate>Portfolio</a></li>
-                <li><a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}" wire:navigate>Contact Us</a></li>
+                <li><a href="{{ route('landing') }}" class="{{ request()->routeIs('landing') ? 'active' : '' }}" wire:navigate>{{ __('messages.home') }}</a></li>
+                <li><a href="{{ route('services') }}" class="{{ request()->routeIs('services') || request()->routeIs('service.detail') ? 'active' : '' }}" wire:navigate>{{ __('messages.services') }}</a></li>
+                <li><a href="{{ route('portfolio') }}" class="{{ request()->routeIs('portfolio') ? 'active' : '' }}" wire:navigate>{{ __('messages.portfolio') }}</a></li>
+                <li><a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}" wire:navigate>{{ __('messages.contact_us') }}</a></li>
             @endforelse
         </ul>
     </nav>
+
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <a href="{{ route('language.switch', 'lt') }}" 
+           class="lang-btn {{ app()->getLocale() === 'lt' ? 'active' : '' }}">
+            LT
+        </a>
+        <a href="{{ route('language.switch', 'en') }}" 
+           class="lang-btn {{ app()->getLocale() === 'en' ? 'active' : '' }}">
+            EN
+        </a>
+    </div>
 </header>
 

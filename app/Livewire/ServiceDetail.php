@@ -3,10 +3,12 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Models\Service;
 
 class ServiceDetail extends Component
 {
     public $service;
+    public $serviceModel;
 
     public $serviceDetails = [];
     private $servicesData = [
@@ -161,16 +163,48 @@ class ServiceDetail extends Component
     public function mount($service)
     {
         $this->service = $service;
-        if (isset($this->servicesData[$service])) {
+        
+        // Try to fetch from database first
+        $this->serviceModel = Service::where('slug', $service)->first();
+        
+        if (!$this->serviceModel && isset($this->servicesData[$service])) {
+            // Fallback to hardcoded data
             $this->serviceDetails = $this->servicesData[$service];
-        } else {
+        } elseif (!$this->serviceModel) {
             abort(404);
         }
     }
 
     public function render()
     {
-        return view('livewire.service-detail')
-            ->layout('layouts.app');
+        // Ensure locale is set from session
+        if (session()->has('locale')) {
+            app()->setLocale(session('locale'));
+        }
+        
+        // If we have serviceModel, prepare translated data
+        $translatedData = [];
+        if ($this->serviceModel) {
+            $locale = app()->getLocale();
+            $translatedData = [
+                'title' => $this->serviceModel->translated_title,
+                'description' => $this->serviceModel->translated_description,
+                'intro' => $this->serviceModel->translated_intro,
+                'closing' => $this->serviceModel->translated_closing,
+                'note' => $this->serviceModel->translated_note,
+                'image' => $this->serviceModel->image,
+                'services_list' => $this->serviceModel->services_list,
+                'why_choose' => $this->serviceModel->why_choose,
+                'benefits' => $this->serviceModel->benefits,
+                'service_details' => $this->serviceModel->service_details,
+                'portfolio_project' => $this->serviceModel->portfolio_project,
+            ];
+        }
+        
+        return view('livewire.service-detail', [
+            'serviceModel' => $this->serviceModel,
+            'serviceDetails' => $this->serviceDetails,
+            'translatedData' => $translatedData
+        ])->layout('layouts.app');
     }
 }

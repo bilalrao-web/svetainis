@@ -1,16 +1,16 @@
 <div class="themain">
     <section class="page-hero">
         <div class="page-hero-content">
-            <h1 class="animate-fade-in-down">Portfolio</h1>
-            <p class="breadcrumb animate-fade-in-up">HOME > <span>Portfolio</span></p>
+            <h1 class="animate-fade-in-down">{{ __('messages.portfolio_page') }}</h1>
+            <p class="breadcrumb animate-fade-in-up">{{ __('messages.home_breadcrumb') }} > <span>{{ __('messages.portfolio') }}</span></p>
         </div>
     </section>
     
 
     <section class="content-section">
         <div class="container">
-            <h2 class="section-title">Recent Projects</h2>
-            <p class="section-subtitle">Have a look at our recent work. We are proud of the work we do and the clients we serve.</p>
+            <h2 class="section-title">{{ __('messages.recent_projects') }}</h2>
+            <p class="section-subtitle">{{ __('messages.portfolio_subtitle') }}</p>
 
             <div class="portfolio-grid">
                 <!-- Website Development Projects -->

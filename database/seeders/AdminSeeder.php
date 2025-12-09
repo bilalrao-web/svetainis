@@ -34,20 +34,78 @@ class AdminSeeder extends Seeder
         Setting::set('footer_text', '© 2024 UPLANCE. All rights reserved.');
         Setting::set('contact_email', 'info@uplance.com');
         Setting::set('contact_phone', '+1 234 567 8900');
+        Setting::set('address', '123 Business Street, City, Country');
+        Setting::set('about_text', 'UPLANCE is a leading web agency providing innovative digital solutions and services. We are committed to delivering excellence and being "The Place 2 Be" for our clients, partners, and team members.');
+        
+        // Social Media Links
+        Setting::set('instagram_url', 'https://instagram.com/uplance');
+        Setting::set('tiktok_url', 'https://tiktok.com/@uplance');
+        Setting::set('linkedin_url', 'https://linkedin.com/company/uplance');
+        Setting::set('facebook_url', 'https://facebook.com/uplance');
+        Setting::set('youtube_url', 'https://youtube.com/@uplance');
 
-        // Create default menu items
-        $menuItems = [
+        // Create default menu items for header
+        $headerMenuItems = [
             ['label' => 'Home', 'route' => 'landing', 'location' => 'header', 'order' => 1],
             ['label' => 'Services', 'route' => 'services', 'location' => 'header', 'order' => 2],
             ['label' => 'Portfolio', 'route' => 'portfolio', 'location' => 'header', 'order' => 3],
             ['label' => 'Contact Us', 'route' => 'contact', 'location' => 'header', 'order' => 4],
         ];
 
-        foreach ($menuItems as $item) {
-            MenuItem::firstOrCreate(
+        foreach ($headerMenuItems as $item) {
+            $menuItem = MenuItem::firstOrCreate(
                 ['label' => $item['label'], 'location' => $item['location']],
                 $item
             );
+            
+            // Add Lithuanian translations
+            $translations = [
+                'Home' => 'Pagrindinis',
+                'Services' => 'Paslaugos',
+                'Portfolio' => 'Portfelis',
+                'Contact Us' => 'Susisiekite su mumis',
+            ];
+            
+            if (isset($translations[$item['label']])) {
+                $menuItem->update([
+                    'label_translations' => [
+                        'en' => $item['label'],
+                        'lt' => $translations[$item['label']]
+                    ]
+                ]);
+            }
+        }
+
+        // Create default menu items for footer
+        $footerMenuItems = [
+            ['label' => 'Home', 'route' => 'landing', 'location' => 'footer', 'order' => 1],
+            ['label' => 'Services', 'route' => 'services', 'location' => 'footer', 'order' => 2],
+            ['label' => 'Portfolio', 'route' => 'portfolio', 'location' => 'footer', 'order' => 3],
+            ['label' => 'Contact Us', 'route' => 'contact', 'location' => 'footer', 'order' => 4],
+        ];
+
+        foreach ($footerMenuItems as $item) {
+            $menuItem = MenuItem::firstOrCreate(
+                ['label' => $item['label'], 'location' => $item['location']],
+                $item
+            );
+            
+            // Add Lithuanian translations
+            $translations = [
+                'Home' => 'Pagrindinis',
+                'Services' => 'Paslaugos',
+                'Portfolio' => 'Portfelis',
+                'Contact Us' => 'Susisiekite su mumis',
+            ];
+            
+            if (isset($translations[$item['label']])) {
+                $menuItem->update([
+                    'label_translations' => [
+                        'en' => $item['label'],
+                        'lt' => $translations[$item['label']]
+                    ]
+                ]);
+            }
         }
 
         // Seed Services
@@ -206,12 +264,72 @@ class AdminSeeder extends Seeder
             ],
         ];
 
+        // Service translations mapping
+        $serviceTranslations = [
+            'Website Development' => [
+                'title' => 'Svetainės kūrimas',
+                'description' => 'UPLANCE mes kuriate elegantiškas ir šiuolaikiškas svetaines jūsų verslui. Mes sutelkiame dėmesį į greitų, mobiliesiems pritaikytų ir optimizuotų svetainių kūrimą, kad lankytojai taptų klientais.',
+            ],
+            'Graphic Designing' => [
+                'title' => 'Grafikos dizainas',
+                'description' => 'Su UPLANCE jūsų prekės ženklas gaus nuostabius grafinius dizainus, kad padidintų matomumą. Suprantame, kad geras dizainas yra daugiau nei estetika; tai efektyvus komunikavimas.',
+            ],
+            'Digital Marketing' => [
+                'title' => 'Skaitmeninis marketingas',
+                'description' => 'Siūlome visą skaitmeninio marketingo paslaugų komplektą. Mūsų strategijos sukurtos padidinti jūsų internetinį matomumą, pritraukti srautą ir paversti lankytojus ištikimais klientais.',
+            ],
+            'SEO & Content Writing' => [
+                'title' => 'SEO ir turinio kūrimas',
+                'description' => 'Vietinė paieškos sistemų optimizacija kelia žaidimą vietiniams mažiesiems ir vidutinio dydžio verslams. Ypač paslaugų sektoriuose, kur klientai gali rinktis iš įvairių paslaugų teikėjų.',
+            ],
+            'App Development' => [
+                'title' => 'Programų kūrimas',
+                'description' => 'Čia, Uplance, mes kuriate galingas, vertės orientuotas ir patogias mobiliąsias programas, kad jūsų verslas galėtų susisiekti bet kada ir bet kur. Mes kuriate programas, kurios pirmiausia teikia puikią vartotojo patirtį.',
+            ],
+            'UI/UX Designing' => [
+                'title' => 'UI/UX dizainas',
+                'description' => 'Mes kuriate intuityvius ir gražius vartotojo sąsajas, kurios suteikia išskirtinę vartotojo patirtį. Mūsų dizaino procesas orientuotas į vartotoją, kad užtikrintume funkcionalų ir malonų produktą.',
+            ],
+        ];
+        
         foreach ($servicesData as $slug => $data) {
             $serviceData = $data;
             $serviceData['slug'] = $slug;
             $serviceData['services_list'] = $data['services'] ?? null;
             $serviceData['service_details'] = $data['service_details'] ?? null;
             $serviceData['is_active'] = true;
+            
+            // Add translations if available
+            if (isset($serviceTranslations[$data['title']])) {
+                $trans = $serviceTranslations[$data['title']];
+                $serviceData['title_translations'] = [
+                    'en' => $data['title'],
+                    'lt' => $trans['title']
+                ];
+                $serviceData['description_translations'] = [
+                    'en' => $data['description'],
+                    'lt' => $trans['description']
+                ];
+                
+                if (isset($data['intro'])) {
+                    $serviceData['intro_translations'] = [
+                        'en' => $data['intro'],
+                        'lt' => $data['intro'] // Keep same for now, can be translated later
+                    ];
+                }
+                if (isset($data['closing'])) {
+                    $serviceData['closing_translations'] = [
+                        'en' => $data['closing'],
+                        'lt' => $data['closing'] // Keep same for now
+                    ];
+                }
+                if (isset($data['note'])) {
+                    $serviceData['note_translations'] = [
+                        'en' => $data['note'],
+                        'lt' => $data['note'] // Keep same for now
+                    ];
+                }
+            }
             
             // Remove 'services' key to avoid conflict
             unset($serviceData['services']);

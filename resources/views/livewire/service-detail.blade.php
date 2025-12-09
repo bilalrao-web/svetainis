@@ -2,8 +2,8 @@
     <!-- Page Hero Section -->
     <div class="page-hero">
         <div class="page-hero-content">
-            <h1 class="animate-fade-in-down">{{ $serviceDetails['title'] }}</h1>
-            <p class="breadcrumb animate-fade-in-up">HOME > SERVICES > <span>{{ strtoupper($serviceDetails['title']) }}</span></p>
+            <h1 class="animate-fade-in-down">{{ !empty($translatedData) ? $translatedData['title'] : $serviceDetails['title'] }}</h1>
+            <p class="breadcrumb animate-fade-in-up">{{ __('messages.home_breadcrumb') }} > {{ strtoupper(__('messages.services')) }} > <span>{{ strtoupper(!empty($translatedData) ? $translatedData['title'] : $serviceDetails['title']) }}</span></p>
         </div>
     </div> 
 
@@ -11,47 +11,47 @@
     <div class="service-detail-container">
         <div class="service-detail-content">
             <div class="service-image animate-fade-in-left">
-                <img src="{{ $serviceDetails['image'] }}" alt="{{ $serviceDetails['title'] }}">
+                <img src="{{ !empty($translatedData) ? $translatedData['image'] : $serviceDetails['image'] }}" alt="{{ !empty($translatedData) ? $translatedData['title'] : $serviceDetails['title'] }}">
             </div>
             <div class="service-text animate-fade-in-right">
-                <h2>{{ $serviceDetails['title'] }}</h2>
-                <p class="service-intro">{{ $serviceDetails['description'] }}</p>
+                <h2>{{ !empty($translatedData) ? $translatedData['title'] : $serviceDetails['title'] }}</h2>
+                <p class="service-intro">{{ !empty($translatedData) ? $translatedData['description'] : $serviceDetails['description'] }}</p>
                 
-                @if ($service === 'website-development' && isset($serviceDetails['intro']))
-                    <p class="service-description">{{ $serviceDetails['intro'] }}</p>
+                @if ($service === 'website-development' && (!empty($translatedData) && $translatedData['intro'] || isset($serviceDetails['intro'])))
+                    <p class="service-description">{{ !empty($translatedData) && $translatedData['intro'] ? $translatedData['intro'] : $serviceDetails['intro'] }}</p>
                     
                     <div class="service-offerings">
-                        <h3>What We Offer:</h3>
+                        <h3>{{ __('messages.what_we_offer') }}</h3>
                         <ul class="services-list">
-                            @foreach($serviceDetails['services'] as $serviceItem)
+                            @foreach((!empty($translatedData) && $translatedData['services_list'] ? $translatedData['services_list'] : $serviceDetails['services']) as $serviceItem)
                                 <li>{{ $serviceItem }}</li>
                             @endforeach
                         </ul>
                     </div>
                     
-                    <p class="service-closing">{{ $serviceDetails['closing'] }}</p>
+                    <p class="service-closing">{{ !empty($translatedData) && $translatedData['closing'] ? $translatedData['closing'] : $serviceDetails['closing'] }}</p>
                     
-                    <a href="#web-types-grid" class="cta-button">DISCOVER MORE</a>
-                @elseif ($service === 'app-development' && isset($serviceDetails['intro']))
-                    <p class="service-description">{{ $serviceDetails['intro'] }}</p>
+                    <a href="#web-types-grid" class="cta-button">{{ __('messages.discover_more') }}</a>
+                @elseif ($service === 'app-development' && (!empty($translatedData) && $translatedData['intro'] || isset($serviceDetails['intro'])))
+                    <p class="service-description">{{ !empty($translatedData) && $translatedData['intro'] ? $translatedData['intro'] : $serviceDetails['intro'] }}</p>
                     
                     <div class="service-offerings">
-                        <h3>Our App Development Services</h3>
+                        <h3>{{ __('messages.our_app_development_services') }}</h3>
                         <ul class="services-list">
-                            @foreach($serviceDetails['services'] as $serviceItem)
+                            @foreach((!empty($translatedData) && $translatedData['services_list'] ? $translatedData['services_list'] : $serviceDetails['services']) as $serviceItem)
                                 <li>{{ $serviceItem }}</li>
                             @endforeach
                         </ul>
                     </div>
                     
-                    @if(isset($serviceDetails['note']))
-                        <p class="service-note">{{ $serviceDetails['note'] }}</p>
+                    @if(!empty($translatedData) && $translatedData['note'] || isset($serviceDetails['note']))
+                        <p class="service-note">{{ !empty($translatedData) && $translatedData['note'] ? $translatedData['note'] : $serviceDetails['note'] }}</p>
                     @endif
                     
                     <div class="service-offerings why-choose">
-                        <h3>Why Choose Our Agency?</h3>
+                        <h3>{{ __('messages.why_choose_our_agency') }}</h3>
                         <ul class="services-list checkmark-list">
-                            @foreach($serviceDetails['why_choose'] as $benefit)
+                            @foreach((!empty($translatedData) && $translatedData['why_choose'] ? $translatedData['why_choose'] : $serviceDetails['why_choose']) as $benefit)
                                 <li>{{ $benefit }}</li>
                             @endforeach
                         </ul>
@@ -59,43 +59,43 @@
                     
                     <p class="service-closing">{{ $serviceDetails['closing'] }}</p>
                     
-                    <a href="{{ route('portfolio.detail', ['project' => $serviceDetails['portfolio_project']]) }}" class="cta-button" wire:navigate>DISCOVER MORE</a>
-                @elseif ($service === 'graphic-designing' && isset($serviceDetails['intro']))
-                    <p class="service-description">{{ $serviceDetails['intro'] }}</p>
+                    <a href="{{ route('portfolio.detail', ['project' => (!empty($translatedData) ? $translatedData['portfolio_project'] : $serviceDetails['portfolio_project'])]) }}" class="cta-button" wire:navigate>{{ __('messages.discover_more') }}</a>
+                @elseif ($service === 'graphic-designing' && (!empty($translatedData) && $translatedData['intro'] || isset($serviceDetails['intro'])))
+                    <p class="service-description">{{ !empty($translatedData) && $translatedData['intro'] ? $translatedData['intro'] : $serviceDetails['intro'] }}</p>
                     
                     <div class="service-offerings">
-                        <h3>Services We Provide</h3>
+                        <h3>{{ __('messages.services_we_provide') }}</h3>
                         <ul class="services-list">
-                            @foreach($serviceDetails['services'] as $serviceItem)
+                            @foreach((!empty($translatedData) && $translatedData['services_list'] ? $translatedData['services_list'] : $serviceDetails['services']) as $serviceItem)
                                 <li>{{ $serviceItem }}</li>
                             @endforeach
                         </ul>
                     </div>
                     
                     <div class="service-offerings why-choose">
-                        <h3>Why We Are Your Best Choice</h3>
+                        <h3>{{ __('messages.why_we_are_best_choice') }}</h3>
                         <p class="why-choose-intro">Our clients receive:</p>
                         <ul class="services-list checkmark-list">
-                            @foreach($serviceDetails['why_choose'] as $benefit)
+                            @foreach((!empty($translatedData) && $translatedData['why_choose'] ? $translatedData['why_choose'] : $serviceDetails['why_choose']) as $benefit)
                                 <li>{{ $benefit }}</li>
                             @endforeach
                         </ul>
                     </div>
                     
-                    <p class="service-closing">{{ $serviceDetails['closing'] }}</p>
+                    <p class="service-closing">{{ !empty($translatedData) && $translatedData['closing'] ? $translatedData['closing'] : $serviceDetails['closing'] }}</p>
                     
-                    <a href="{{ route('portfolio.detail', ['project' => $serviceDetails['portfolio_project']]) }}" class="cta-button" wire:navigate>DISCOVER MORE</a>
-                @elseif ($service === 'seo-content-writing' && isset($serviceDetails['intro']))
-                    <p class="service-description">{{ $serviceDetails['intro'] }}</p>
+                    <a href="{{ route('portfolio.detail', ['project' => (!empty($translatedData) ? $translatedData['portfolio_project'] : $serviceDetails['portfolio_project'])]) }}" class="cta-button" wire:navigate>{{ __('messages.discover_more') }}</a>
+                @elseif ($service === 'seo-content-writing' && (!empty($translatedData) && $translatedData['intro'] || isset($serviceDetails['intro'])))
+                    <p class="service-description">{{ !empty($translatedData) && $translatedData['intro'] ? $translatedData['intro'] : $serviceDetails['intro'] }}</p>
                     
-                    @if(isset($serviceDetails['note']))
-                        <p class="service-note">{{ $serviceDetails['note'] }}</p>
+                    @if(!empty($translatedData) && $translatedData['note'] || isset($serviceDetails['note']))
+                        <p class="service-note">{{ !empty($translatedData) && $translatedData['note'] ? $translatedData['note'] : $serviceDetails['note'] }}</p>
                     @endif
                     
                     <div class="service-offerings">
-                        <h3>The Core SEO Services We Provide</h3>
+                        <h3>{{ __('messages.core_seo_services') }}</h3>
                         <div class="seo-services-list">
-                            @foreach($serviceDetails['services'] as $serviceItem)
+                            @foreach((!empty($translatedData) && $translatedData['service_details'] ? $translatedData['service_details'] : $serviceDetails['services']) as $serviceItem)
                                 <div class="seo-service-item">
                                     <h4 class="seo-service-title">{{ $serviceItem['title'] }}</h4>
                                     <p class="seo-service-description">{{ $serviceItem['description'] }}</p>
@@ -112,20 +112,20 @@
                     </div>
                     
                     <div class="service-offerings why-choose">
-                        <h3>What You Gain From Our SEO Services:</h3>
+                        <h3>{{ __('messages.what_you_gain') }}</h3>
                         <ul class="services-list checkmark-list">
-                            @foreach($serviceDetails['benefits'] as $benefit)
+                            @foreach((!empty($translatedData) && $translatedData['benefits'] ? $translatedData['benefits'] : $serviceDetails['benefits']) as $benefit)
                                 <li>{{ $benefit }}</li>
                             @endforeach
                         </ul>
                     </div>
                     
-                    <p class="service-closing">{{ $serviceDetails['closing'] }}</p>
+                    <p class="service-closing">{{ !empty($translatedData) && $translatedData['closing'] ? $translatedData['closing'] : $serviceDetails['closing'] }}</p>
                     
-                    <a href="{{ route('portfolio.detail', ['project' => $serviceDetails['portfolio_project']]) }}" class="cta-button" wire:navigate>DISCOVER MORE</a>
+                    <a href="{{ route('portfolio.detail', ['project' => (!empty($translatedData) ? $translatedData['portfolio_project'] : $serviceDetails['portfolio_project'])]) }}" class="cta-button" wire:navigate>{{ __('messages.discover_more') }}</a>
                 @else
-                    <p>{{ $serviceDetails['description'] }}</p>
-                    <a href="{{ route('portfolio.detail', ['project' => $serviceDetails['portfolio_project']]) }}" class="cta-button" wire:navigate>DISCOVER MORE</a>
+                    <p>{{ !empty($translatedData) ? $translatedData['description'] : $serviceDetails['description'] }}</p>
+                    <a href="{{ route('portfolio.detail', ['project' => (!empty($translatedData) ? $translatedData['portfolio_project'] : $serviceDetails['portfolio_project'])]) }}" class="cta-button" wire:navigate>{{ __('messages.discover_more') }}</a>
                 @endif
             </div>
         </div>

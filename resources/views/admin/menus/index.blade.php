@@ -2,9 +2,11 @@
 
 @section('content')
 <div>
-    <div class="mb-6">
+    <div class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold">Menu Items</h1>
-        <p class="text-gray-600 mt-2">Edit existing menu items. You can modify labels, routes, URLs, and order.</p>
+        <a href="{{ route('admin.menus.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+            <i class="fas fa-plus mr-2"></i>Add New Menu Item
+        </a>
     </div>
     
     <div class="bg-white rounded-lg shadow overflow-hidden">
@@ -32,9 +34,16 @@
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <a href="{{ route('admin.menus.edit', $item) }}" class="text-blue-600 hover:text-blue-900">
-                                <i class="fas fa-edit mr-2"></i>Edit
+                            <a href="{{ route('admin.menus.edit', $item) }}" class="text-blue-600 hover:text-blue-900 mr-3">
+                                <i class="fas fa-edit"></i>
                             </a>
+                            <form action="{{ route('admin.menus.destroy', $item) }}" method="POST" class="inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Are you sure?')">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @empty

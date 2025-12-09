@@ -14,6 +14,10 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PortfolioController;
+use App\Http\Controllers\LanguageController;
+
+// Language Switching
+Route::get('/language/{locale}', [LanguageController::class, 'switch'])->name('language.switch');
 
 // Public Routes
 Route::get('/', Landing::class)->name('landing');
@@ -41,10 +45,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Services
         Route::resource('services', ServiceController::class);
 
-        // Menus (only edit/update, no create/delete)
-        Route::get('/menus', [MenuController::class, 'index'])->name('menus.index');
-        Route::get('/menus/{menuItem}/edit', [MenuController::class, 'edit'])->name('menus.edit');
-        Route::put('/menus/{menuItem}', [MenuController::class, 'update'])->name('menus.update');
+        // Menus
+        Route::resource('menus', MenuController::class);
 
         // Pages
         Route::resource('pages', PageController::class);

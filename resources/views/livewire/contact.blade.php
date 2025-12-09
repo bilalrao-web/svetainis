@@ -2,8 +2,8 @@
     <!-- Page Hero Section -->
     <div class="page-hero">
         <div class="page-hero-content">
-            <h1 class="animate-fade-in-down">Contact Us</h1>
-            <p class="breadcrumb animate-fade-in-up">HOME > <span>CONTACT</span></p>
+            <h1 class="animate-fade-in-down">{{ __('messages.contact_page') }}</h1>
+            <p class="breadcrumb animate-fade-in-up">{{ __('messages.home_breadcrumb') }} > <span>{{ strtoupper(__('messages.contact_us')) }}</span></p>
         </div>
     </div>
 
@@ -12,8 +12,8 @@
         <div class="contact-container animate-fade-in-up">
             <!-- Contact Info Side -->
             <div class="contact-info-side">
-                <h2>Get In Touch</h2>
-                <p>We are here for you! How can we help? Fill out the form, and we'll get back to you as soon as possible. We're ready to bring your ideas to life with our professional web design and development services.</p>
+                <h2>{{ __('messages.get_in_touch') }}</h2>
+                <p>{{ __('messages.contact_description') }}</p>
             </div>
 
             <!-- Contact Form Side -->
@@ -30,24 +30,24 @@
 
                     <div class="form-group">
                         {{-- wire:model links this input to the $name property in the component --}}
-                        <input type="text" wire:model.lazy="name" placeholder="Your Name">
+                        <input type="text" wire:model.lazy="name" placeholder="{{ __('messages.your_name') }}">
                         @error('name') <span style="color: #e63946; font-size: 0.9rem;">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         {{-- wire:model links this input to the $email property --}}
-                        <input type="email" wire:model.lazy="email" placeholder="Your Email">
+                        <input type="email" wire:model.lazy="email" placeholder="{{ __('messages.your_email') }}">
                         @error('email') <span style="color: #e63946; font-size: 0.9rem;">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         {{-- wire:model links this textarea to the $message property --}}
-                        <textarea wire:model.lazy="message" placeholder="Your Message"></textarea>
+                        <textarea wire:model.lazy="message" placeholder="{{ __('messages.your_message') }}"></textarea>
                         @error('message') <span style="color: #e63946; font-size: 0.9rem;">{{ $message }}</span> @enderror
                     </div>
 
                     {{-- Loading state for the button --}}
                     <button type="submit">
-                        <span wire:loading.remove>Send Message</span>
-                        <span wire:loading>Sending...</span>
+                        <span wire:loading.remove>{{ __('messages.send_message') }}</span>
+                        <span wire:loading>{{ __('messages.sending') }}</span>
                     </button>
                 </form>
             </div>
