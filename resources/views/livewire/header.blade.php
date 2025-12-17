@@ -23,9 +23,37 @@
                         } else {
                             $href = $item->url ?: '#';
                         }
+                        
+                        // Check if menu item should be active
+                        $isActive = false;
+                        
+                        // Check exact route match
+                        if ($item->route && request()->routeIs($item->route)) {
+                            $isActive = true;
+                        }
+                        // Check URL match
+                        elseif ($item->url && request()->is($item->url)) {
+                            $isActive = true;
+                        }
+                        // Check if on service detail page and menu item is services
+                        elseif ($item->route === 'services' && request()->routeIs('service.detail')) {
+                            $isActive = true;
+                        }
+                        // Check if on portfolio detail page and menu item is portfolio
+                        elseif ($item->route === 'portfolio' && request()->routeIs('portfolio.detail')) {
+                            $isActive = true;
+                        }
+                        // Check URL patterns for services
+                        elseif ($item->url && (str_starts_with($item->url, '/services') || $item->url === 'services') && request()->is('services/*')) {
+                            $isActive = true;
+                        }
+                        // Check URL patterns for portfolio
+                        elseif ($item->url && (str_starts_with($item->url, '/portfolio') || $item->url === 'portfolio') && request()->is('portfolio/*')) {
+                            $isActive = true;
+                        }
                     @endphp
                     <a href="{{ $href }}"
-                       class="{{ ($item->route && request()->routeIs($item->route)) || ($item->url && request()->is($item->url)) ? 'active' : '' }}"
+                       class="{{ $isActive ? 'active' : '' }}"
                        wire:navigate>
                         {{ $item->translated_label }}
                     </a>
@@ -34,7 +62,7 @@
                 {{-- Fallback to default menu if no items in database --}}
                 <li><a href="{{ route('landing') }}" class="{{ request()->routeIs('landing') ? 'active' : '' }}" wire:navigate>{{ __('messages.home') }}</a></li>
                 <li><a href="{{ route('services') }}" class="{{ request()->routeIs('services') || request()->routeIs('service.detail') ? 'active' : '' }}" wire:navigate>{{ __('messages.services') }}</a></li>
-                <li><a href="{{ route('portfolio') }}" class="{{ request()->routeIs('portfolio') ? 'active' : '' }}" wire:navigate>{{ __('messages.portfolio') }}</a></li>
+                <li><a href="{{ route('portfolio') }}" class="{{ request()->routeIs('portfolio') || request()->routeIs('portfolio.detail') ? 'active' : '' }}" wire:navigate>{{ __('messages.portfolio') }}</a></li>
                 <li><a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}" wire:navigate>{{ __('messages.contact_us') }}</a></li>
             @endforelse
         </ul>
