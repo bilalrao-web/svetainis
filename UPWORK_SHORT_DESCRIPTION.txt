@@ -1,0 +1,20 @@
+Professional Agency Website with Dynamic Admin Panel
+
+Built a complete, modern agency website using Laravel 12, Livewire 3, and Tailwind CSS 4. Features include:
+
+✅ Full Admin Panel - Complete CRUD for services, portfolio, menus, pages, and settings
+✅ Multi-Language Support - Bilingual (Lithuanian/English) with dynamic translations
+✅ Dynamic Content Management - All content editable through admin without code changes
+✅ Modern UI/UX - Responsive design with smooth animations
+✅ Portfolio Showcase - Card-based layout with detailed project pages
+✅ Service Pages - Rich content pages with structured information
+✅ Contact System - Functional contact form with validation
+✅ SEO-Friendly - Clean URLs and optimized structure
+
+Key Technologies: Laravel 12, Livewire 3, Tailwind CSS 4, MySQL, Vite, AOS Animations
+
+The website features a comprehensive admin panel where clients can manage all content including services, portfolio projects, navigation menus, site settings, and custom pages. Multi-language support is implemented at both frontend and database levels with automatic translation retrieval.
+
+All code follows Laravel best practices, includes proper validation, error handling, and security measures. The project is production-ready and fully responsive across all devices.
+
+

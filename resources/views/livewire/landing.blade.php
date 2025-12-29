@@ -34,38 +34,38 @@
                     {{-- Fallback to hardcoded services if database is empty --}}
                     <a href="{{ route('service.detail', ['service' => 'website-development']) }}" class="landing-service-card animate-fade-in-up" wire:navigate>
                         <div class="landing-service-content">
-                            <h3>WEBSITE DEVELOPMENT</h3>
-                            <p>Custom websites built with modern technologies, responsive design, and optimized performance.</p>
+                            <h3>{{ strtoupper(__('messages.website_development')) }}</h3>
+                            <p>{{ __('messages.service_description_website') }}</p>
                         </div>
                     </a>
                     <a href="{{ route('service.detail', ['service' => 'graphic-designing']) }}" class="landing-service-card animate-fade-in-up" style="animation-delay: 0.1s;" wire:navigate>
                         <div class="landing-service-content">
-                            <h3>GRAPHIC DESIGNING</h3>
-                            <p>Creative visual solutions including logos, branding, and marketing materials.</p>
+                            <h3>{{ strtoupper(__('messages.graphic_designing')) }}</h3>
+                            <p>{{ __('messages.service_description_graphic') }}</p>
                         </div>
                     </a>
                     <a href="{{ route('service.detail', ['service' => 'digital-marketing']) }}" class="landing-service-card animate-fade-in-up" style="animation-delay: 0.2s;" wire:navigate>
                         <div class="landing-service-content">
-                            <h3>DIGITAL MARKETING</h3>
-                            <p>Strategic online marketing campaigns to boost visibility and drive conversions.</p>
+                            <h3>{{ strtoupper(__('messages.digital_marketing')) }}</h3>
+                            <p>{{ __('messages.service_description_digital') }}</p>
                         </div>
                     </a>
                     <a href="{{ route('service.detail', ['service' => 'seo-content-writing']) }}" class="landing-service-card animate-fade-in-up" style="animation-delay: 0.3s;" wire:navigate>
                         <div class="landing-service-content">
-                            <h3>SEO & CONTENT WRITING</h3>
-                            <p>High-quality content creation and SEO optimization to improve search rankings.</p>
+                            <h3>{{ strtoupper(__('messages.seo_content_writing')) }}</h3>
+                            <p>{{ __('messages.service_description_seo') }}</p>
                         </div>
                     </a>
                     <a href="{{ route('service.detail', ['service' => 'app-development']) }}" class="landing-service-card animate-fade-in-up" style="animation-delay: 0.4s;" wire:navigate>
                         <div class="landing-service-content">
-                            <h3>APP DEVELOPMENT</h3>
-                            <p>Native and cross-platform mobile applications for iOS and Android.</p>
+                            <h3>{{ strtoupper(__('messages.app_development')) }}</h3>
+                            <p>{{ __('messages.service_description_app') }}</p>
                         </div>
                     </a>
                     <a href="{{ route('service.detail', ['service' => 'ui-ux-designing']) }}" class="landing-service-card animate-fade-in-up" style="animation-delay: 0.5s;" wire:navigate>
                         <div class="landing-service-content">
-                            <h3>UI/UX DESIGNING</h3>
-                            <p>User-centered design solutions that create intuitive and engaging interfaces.</p>
+                            <h3>{{ strtoupper(__('messages.ui_ux_designing')) }}</h3>
+                            <p>{{ __('messages.service_description_uiux') }}</p>
                         </div>
                     </a>
                 @endforelse

@@ -193,10 +193,10 @@ class ServiceDetail extends Component
                 'closing' => $this->serviceModel->translated_closing,
                 'note' => $this->serviceModel->translated_note,
                 'image' => $this->serviceModel->image,
-                'services_list' => $this->serviceModel->services_list,
-                'why_choose' => $this->serviceModel->why_choose,
-                'benefits' => $this->serviceModel->benefits,
-                'service_details' => $this->serviceModel->service_details,
+                'services_list' => $this->serviceModel->translated_services_list,
+                'why_choose' => $this->serviceModel->translated_why_choose,
+                'benefits' => $this->serviceModel->translated_benefits,
+                'service_details' => $this->serviceModel->translated_service_details,
                 'portfolio_project' => $this->serviceModel->portfolio_project,
             ];
         }

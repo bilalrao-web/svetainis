@@ -25,7 +25,17 @@ class SettingsController extends Controller
                 $path = $file->store('settings', 'public');
                 Setting::set($key, $path, 'image');
             } else {
-                Setting::set($key, $value ?? '');
+                $setting = Setting::where('key', $key)->first();
+                if ($setting) {
+                    $setting->value = $value ?? '';
+                    // Handle translation fields
+                    if ($request->has($key . '_translations')) {
+                        $setting->value_translations = $request->input($key . '_translations');
+                    }
+                    $setting->save();
+                } else {
+                    Setting::set($key, $value ?? '');
+                }
             }
         }
 

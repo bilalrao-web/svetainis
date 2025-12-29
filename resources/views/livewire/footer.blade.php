@@ -62,19 +62,19 @@
                     <li>
                         <a href="{{ $instagram ?: 'https://instagram.com/uplance' }}" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-instagram"></i>
-                            <span>Instagram</span>
+                            <span>{{ __('messages.instagram') }}</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ $tiktok ?: 'https://tiktok.com/@uplance' }}" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-tiktok"></i>
-                            <span>TikTok</span>
+                            <span>{{ __('messages.tiktok') }}</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ $linkedin ?: 'https://linkedin.com/company/uplance' }}" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-linkedin"></i>
-                            <span>LinkedIn</span>
+                            <span>{{ __('messages.linkedin') }}</span>
                         </a>
                     </li>
                 </ul>
@@ -86,7 +86,7 @@
                 @if($aboutText)
                     <p class="footer-about-text">{{ $aboutText }}</p>
                 @else
-                    <p class="footer-about-text">UPLANCE is a leading web agency providing innovative digital solutions and services. We are committed to delivering excellence and being "The Place 2 Be" for our clients, partners, and team members.</p>
+                    <p class="footer-about-text">{{ __('messages.about_text_default') }}</p>
                 @endif
                 <div class="footer-logo">
                     @if(str_starts_with($logo, 'storage/'))

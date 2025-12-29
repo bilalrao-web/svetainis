@@ -3,13 +3,15 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Models\Portfolio as PortfolioModel;
 
 class PortfolioDetail extends Component
 {
     public $project;
     public $projectDetails = [];
+    public $portfolioModel = null;
 
-    // Portfolio data for each project
+    // Portfolio data for each project (fallback)
     private $portfolioData = [
         'e-commerce-platform' => [
             'title' => 'E-Commerce Platform',
@@ -429,7 +431,31 @@ class PortfolioDetail extends Component
     public function mount($project)
     {
         $this->project = $project;
-        if (isset($this->portfolioData[$project])) {
+        
+        // Try to fetch from database first
+        $this->portfolioModel = PortfolioModel::where('slug', $project)->first();
+        
+        if ($this->portfolioModel) {
+            // Use database data with translations
+            $this->projectDetails = [
+                'title' => $this->portfolioModel->translated_title,
+                'category' => $this->portfolioModel->translated_category,
+                'service_slug' => $this->portfolioModel->service_slug,
+                'image' => $this->portfolioModel->image,
+                'description' => $this->portfolioModel->translated_description,
+                'technologies' => $this->portfolioModel->translated_technologies,
+                'web_type' => $this->portfolioModel->translated_web_type,
+                'use_cases' => $this->portfolioModel->translated_use_cases,
+                'challenge' => $this->portfolioModel->translated_challenge,
+                'solution' => $this->portfolioModel->translated_solution,
+                'results' => $this->portfolioModel->translated_results,
+                'features' => $this->portfolioModel->translated_features,
+                'client' => $this->portfolioModel->client,
+                'duration' => $this->portfolioModel->duration,
+                'team_size' => $this->portfolioModel->team_size,
+            ];
+        } elseif (isset($this->portfolioData[$project])) {
+            // Fallback to hardcoded data
             $this->projectDetails = $this->portfolioData[$project];
         } else {
             abort(404);

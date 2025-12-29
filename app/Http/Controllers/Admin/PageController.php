@@ -34,6 +34,20 @@ class PageController extends Controller
         if (empty($data['slug'])) {
             $data['slug'] = Str::slug($data['title']);
         }
+        
+        // Handle translation fields
+        if ($request->has('title_translations')) {
+            $data['title_translations'] = $request->input('title_translations');
+        }
+        if ($request->has('content_translations')) {
+            $data['content_translations'] = $request->input('content_translations');
+        }
+        if ($request->has('meta_description_translations')) {
+            $data['meta_description_translations'] = $request->input('meta_description_translations');
+        }
+        if ($request->has('meta_keywords_translations')) {
+            $data['meta_keywords_translations'] = $request->input('meta_keywords_translations');
+        }
 
         Page::create($data);
 
@@ -56,6 +70,20 @@ class PageController extends Controller
             'meta_keywords' => 'nullable|string',
             'is_active' => 'boolean',
         ]);
+        
+        // Handle translation fields
+        if ($request->has('title_translations')) {
+            $data['title_translations'] = $request->input('title_translations');
+        }
+        if ($request->has('content_translations')) {
+            $data['content_translations'] = $request->input('content_translations');
+        }
+        if ($request->has('meta_description_translations')) {
+            $data['meta_description_translations'] = $request->input('meta_description_translations');
+        }
+        if ($request->has('meta_keywords_translations')) {
+            $data['meta_keywords_translations'] = $request->input('meta_keywords_translations');
+        }
 
         $page->update($data);
 
